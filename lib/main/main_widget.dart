@@ -221,411 +221,285 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       drawer: Drawer(
         elevation: 16,
-        child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(4, 36, 4, 0),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
-                          child: Container(
-                            width: 64,
-                            height: 64,
-                            clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
+        child: Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).secondaryBackground,
+          ),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(4, 36, 4, 0),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+                            child: Container(
+                              width: 64,
+                              height: 64,
+                              clipBehavior: Clip.antiAlias,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                              ),
+                              child: Image.asset(
+                                'assets/images/user-icon.png',
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                            child: Image.asset(
-                              'assets/images/user-icon.png',
-                              fit: BoxFit.cover,
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '[User Name]',
+                                style: FlutterFlowTheme.of(context).bodyText1,
+                              ),
+                              Text(
+                                '[User Role]',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      FlutterFlowIconButton(
+                        borderColor: Colors.transparent,
+                        borderRadius: 24,
+                        borderWidth: 1,
+                        buttonSize: 48,
+                        icon: Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 24,
+                        ),
+                        onPressed: () {
+                          print('IconButton pressed ...');
+                        },
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    thickness: 1,
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 12),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(4, 0, 4, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        '[Outlet name]',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1,
+                                      ),
+                                      Text(
+                                        '[Outlet name]',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1,
+                                      ),
+                                    ],
+                                  ),
+                                  FFButtonWidget(
+                                    onPressed: () {
+                                      print('Button pressed ...');
+                                    },
+                                    text: 'Select Outlet',
+                                    options: FFButtonOptions(
+                                      width: 130,
+                                      height: 40,
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .subtitle2
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBtnText,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '[User Name]',
-                              style: FlutterFlowTheme.of(context).bodyText1,
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                    child: InkWell(
+                      onTap: () async {
+                        context.pushNamed('main');
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            width: 4,
+                            height: 48,
+                            decoration: BoxDecoration(
+                              color:
+                                  FlutterFlowTheme.of(context).secondaryColor,
                             ),
-                            Text(
-                              '[User Role]',
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                            child: Icon(
+                              Icons.home_outlined,
+                              color:
+                                  FlutterFlowTheme.of(context).secondaryColor,
+                              size: 28,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                            child: Text(
+                              'Home',
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
                                     fontFamily: 'Poppins',
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
-                                    fontWeight: FontWeight.normal,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
                                   ),
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 24,
-                      borderWidth: 1,
-                      buttonSize: 48,
-                      icon: Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 24,
+                          ),
+                        ],
                       ),
-                      onPressed: () {
-                        print('IconButton pressed ...');
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                    child: InkWell(
+                      onTap: () async {
+                        context.pushNamed('productList');
                       },
-                    ),
-                  ],
-                ),
-                Divider(
-                  thickness: 1,
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 12),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(4, 0, 4, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      '[Outlet name]',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
-                                    ),
-                                    Text(
-                                      '[Outlet name]',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
-                                    ),
-                                  ],
-                                ),
-                                FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
-                                  },
-                                  text: 'Select Outlet',
-                                  options: FFButtonOptions(
-                                    width: 130,
-                                    height: 40,
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle2
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBtnText,
-                                          fontWeight: FontWeight.normal,
-                                        ),
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                ),
-                              ],
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            width: 4,
+                            height: 48,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
                             ),
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: 4,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).secondaryColor,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                        child: Icon(
-                          Icons.home_outlined,
-                          color: FlutterFlowTheme.of(context).secondaryColor,
-                          size: 28,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                        child: Text(
-                          'Home',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Poppins',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                  child: InkWell(
-                    onTap: () async {
-                      context.pushNamed('productList');
-                    },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          width: 4,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                            child: FaIcon(
+                              FontAwesomeIcons.productHunt,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 24,
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                          child: FaIcon(
-                            FontAwesomeIcons.productHunt,
-                            color: Colors.black,
-                            size: 24,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
+                            child: Text(
+                              'Manage product',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
-                          child: Text(
-                            'Manage product',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: 4,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
-                        child: FaIcon(
-                          FontAwesomeIcons.calculator,
-                          color: Colors.black,
-                          size: 24,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                        child: Text(
-                          'Checkout',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: 4,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                        child: Icon(
-                          Icons.history,
-                          color: Colors.black,
-                          size: 24,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
-                        child: Text(
-                          'Transactions',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: 4,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                        child: Icon(
-                          Icons.receipt_sharp,
-                          color: Colors.black,
-                          size: 24,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                        child: Text(
-                          'Selling Report',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: 4,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                        child: Icon(
-                          Icons.person_outline_outlined,
-                          color: Colors.black,
-                          size: 28,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                        child: Text(
-                          'Customers',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                  child: InkWell(
-                    onTap: () async {
-                      context.pushNamed('employeeList');
-                    },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          width: 4,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                    child: InkWell(
+                      onTap: () async {
+                        context.pushNamed('checkoutList');
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            width: 4,
+                            height: 48,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                          child: FaIcon(
-                            FontAwesomeIcons.users,
-                            color: Colors.black,
-                            size: 24,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
+                            child: FaIcon(
+                              FontAwesomeIcons.calculator,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 24,
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                          child: Text(
-                            'Employees',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Text(
+                              'Checkout',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                  child: InkWell(
-                    onTap: () async {
-                      context.pushNamed('employeeList');
-                    },
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -640,15 +514,15 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
                           child: Icon(
-                            Icons.storefront,
-                            color: Colors.black,
-                            size: 28,
+                            Icons.history,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24,
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
                           child: Text(
-                            'Outlets',
+                            'Transactions',
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Poppins',
@@ -660,43 +534,200 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
                       ],
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: 4,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: 4,
+                          height: 48,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                        child: Icon(
-                          Icons.settings,
-                          color: Colors.black,
-                          size: 28,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                          child: Icon(
+                            Icons.receipt_sharp,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24,
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                        child: Text(
-                          'Settings',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                          child: Text(
+                            'Selling Report',
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: 4,
+                          height: 48,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                          child: Icon(
+                            Icons.person_outline_outlined,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 28,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                          child: Text(
+                            'Customers',
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                    child: InkWell(
+                      onTap: () async {
+                        context.pushNamed('employeeList');
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            width: 4,
+                            height: 48,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                            child: FaIcon(
+                              FontAwesomeIcons.users,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 24,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                            child: Text(
+                              'Employees',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
                                     fontFamily: 'Poppins',
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,
                                   ),
-                        ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                    child: InkWell(
+                      onTap: () async {
+                        context.pushNamed('employeeList');
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            width: 4,
+                            height: 48,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                            child: Icon(
+                              Icons.storefront,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 28,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                            child: Text(
+                              'Outlets',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: 4,
+                          height: 48,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                          child: Icon(
+                            Icons.settings,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 28,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                          child: Text(
+                            'Settings',
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -721,7 +752,7 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
                           borderRadius: 24,
                           buttonSize: 48,
                           icon: Icon(
-                            Icons.format_list_bulleted,
+                            Icons.menu,
                             color: FlutterFlowTheme.of(context).primaryText,
                             size: 24,
                           ),

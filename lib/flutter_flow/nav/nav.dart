@@ -61,16 +61,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : ProductListWidget(),
             ),
             FFRoute(
-              name: 'editProduct',
-              path: 'editProduct',
-              builder: (context, params) => EditProductWidget(),
-            ),
-            FFRoute(
               name: 'editEmployee',
               path: 'editEmployee',
               builder: (context, params) => EditEmployeeWidget(
                 employeeId: params.getParam('employeeId', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'editProduct',
+              path: 'editProduct',
+              builder: (context, params) => EditProductWidget(),
+            ),
+            FFRoute(
+              name: 'editOutlet',
+              path: 'editOutlet',
+              builder: (context, params) => EditOutletWidget(),
             ),
             FFRoute(
               name: 'employeeList',
@@ -87,9 +92,30 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : OutletListWidget(),
             ),
             FFRoute(
-              name: 'editOutlet',
-              path: 'editOutlet',
-              builder: (context, params) => EditOutletWidget(),
+              name: 'editVariant',
+              path: 'editVariant',
+              builder: (context, params) => EditVariantWidget(
+                variantId: params.getParam('variantId', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'checkoutProductDetail',
+              path: 'checkoutProductDetail',
+              builder: (context, params) => CheckoutProductDetailWidget(
+                productId: params.getParam('productId', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'checkoutPayment',
+              path: 'checkoutPayment',
+              builder: (context, params) => CheckoutPaymentWidget(
+                employeeId: params.getParam('employeeId', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'checkoutList',
+              path: 'checkoutList',
+              builder: (context, params) => CheckoutListWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

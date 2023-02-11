@@ -9,19 +9,24 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'edit_product_model.dart';
-export 'edit_product_model.dart';
+import 'edit_variant_model.dart';
+export 'edit_variant_model.dart';
 
-class EditProductWidget extends StatefulWidget {
-  const EditProductWidget({Key? key}) : super(key: key);
+class EditVariantWidget extends StatefulWidget {
+  const EditVariantWidget({
+    Key? key,
+    this.variantId,
+  }) : super(key: key);
+
+  final String? variantId;
 
   @override
-  _EditProductWidgetState createState() => _EditProductWidgetState();
+  _EditVariantWidgetState createState() => _EditVariantWidgetState();
 }
 
-class _EditProductWidgetState extends State<EditProductWidget>
+class _EditVariantWidgetState extends State<EditVariantWidget>
     with TickerProviderStateMixin {
-  late EditProductModel _model;
+  late EditVariantModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -51,14 +56,12 @@ class _EditProductWidgetState extends State<EditProductWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => EditProductModel());
+    _model = createModel(context, () => EditVariantModel());
 
     _model.nameController = TextEditingController();
     _model.priceController = TextEditingController();
-    _model.brandController1 = TextEditingController();
-    _model.brandController2 = TextEditingController();
     _model.basePriceController = TextEditingController();
-    _model.brandController3 = TextEditingController();
+    _model.brandController = TextEditingController();
   }
 
   @override
@@ -80,7 +83,7 @@ class _EditProductWidgetState extends State<EditProductWidget>
             IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
         automaticallyImplyLeading: true,
         title: Text(
-          'Product Details',
+          'Variant Details',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).primaryText,
@@ -97,9 +100,11 @@ class _EditProductWidgetState extends State<EditProductWidget>
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Column(
                   mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
@@ -140,8 +145,8 @@ class _EditProductWidgetState extends State<EditProductWidget>
                                       controller: _model.nameController,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Product Name',
-                                        hintText: 'Input product name',
+                                        labelText: 'Variant Name',
+                                        hintText: 'Input varinat name',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
                                         enabledBorder: OutlineInputBorder(
@@ -203,13 +208,13 @@ class _EditProductWidgetState extends State<EditProductWidget>
                                 Expanded(
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 20, 0, 0),
+                                        0, 8, 0, 8),
                                     child: TextFormField(
                                       controller: _model.priceController,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Product Price',
-                                        hintText: 'Input product price',
+                                        labelText: 'Variant Price',
+                                        hintText: 'Input variant price',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
                                         enabledBorder: OutlineInputBorder(
@@ -262,248 +267,6 @@ class _EditProductWidgetState extends State<EditProductWidget>
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Stack(
-                                    children: [
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        decoration: BoxDecoration(),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 20, 0, 0),
-                                          child: TextFormField(
-                                            controller: _model.brandController1,
-                                            readOnly: true,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              labelText: 'Brand',
-                                              hintText: 'Choose brand',
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText2,
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              filled: true,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                            validator: _model
-                                                .brandController1Validator
-                                                .asValidator(context),
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: AlignmentDirectional(1, 0),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 22, 0, 0),
-                                          child: FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 25,
-                                            borderWidth: 1,
-                                            buttonSize: 50,
-                                            icon: Icon(
-                                              Icons.add,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 30,
-                                            ),
-                                            onPressed: () {
-                                              print('IconButton pressed ...');
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 8),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Stack(
-                                    children: [
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        decoration: BoxDecoration(),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 20, 0, 0),
-                                          child: TextFormField(
-                                            controller: _model.brandController2,
-                                            readOnly: true,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              labelText: 'Category',
-                                              hintText: 'Choose category',
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText2,
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              filled: true,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                            validator: _model
-                                                .brandController2Validator
-                                                .asValidator(context),
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: AlignmentDirectional(1, 0),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 22, 0, 0),
-                                          child: FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 25,
-                                            borderWidth: 1,
-                                            buttonSize: 50,
-                                            icon: Icon(
-                                              Icons.add,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 30,
-                                            ),
-                                            onPressed: () {
-                                              print('IconButton pressed ...');
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Divider(
-                            thickness: 2,
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Favorite Product?',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                              ),
-                              Switch(
-                                value: _model.switchValue1 ??= false,
-                                onChanged: (newValue) async {
-                                  setState(
-                                      () => _model.switchValue1 = newValue!);
-                                },
-                                activeColor:
-                                    FlutterFlowTheme.of(context).secondaryColor,
-                              ),
-                            ],
-                          ),
                           Divider(
                             thickness: 2,
                           ),
@@ -539,10 +302,10 @@ class _EditProductWidgetState extends State<EditProductWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Switch(
-                                    value: _model.switchValue2 ??= false,
+                                    value: _model.switchValue ??= false,
                                     onChanged: (newValue) async {
-                                      setState(() =>
-                                          _model.switchValue2 = newValue!);
+                                      setState(
+                                          () => _model.switchValue = newValue!);
                                     },
                                     activeColor: FlutterFlowTheme.of(context)
                                         .secondaryColor,
@@ -630,7 +393,7 @@ class _EditProductWidgetState extends State<EditProductWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0, 8, 0, 0),
                                           child: TextFormField(
-                                            controller: _model.brandController3,
+                                            controller: _model.brandController,
                                             readOnly: true,
                                             obscureText: false,
                                             decoration: InputDecoration(
@@ -685,7 +448,7 @@ class _EditProductWidgetState extends State<EditProductWidget>
                                                   fontWeight: FontWeight.normal,
                                                 ),
                                             validator: _model
-                                                .brandController3Validator
+                                                .brandControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ),
@@ -719,154 +482,6 @@ class _EditProductWidgetState extends State<EditProductWidget>
                                 ),
                               ],
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Divider(
-                            thickness: 1,
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Variant List',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                              ),
-                              FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderRadius: 24,
-                                borderWidth: 1,
-                                buttonSize: 48,
-                                icon: Icon(
-                                  Icons.add,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 24,
-                                ),
-                                onPressed: () async {
-                                  context.pushNamed('editVariant');
-                                },
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  width: 100,
-                                  height: 64,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    4, 0, 0, 0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(4),
-                                              child: Image.asset(
-                                                'assets/images/add-image.png',
-                                                width: 56,
-                                                height: 56,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    4, 0, 0, 0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  '[Variant Name]',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1,
-                                                ),
-                                                Text(
-                                                  '[Variant Price]',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 18,
-                                            borderWidth: 1,
-                                            buttonSize: 36,
-                                            icon: Icon(
-                                              Icons.edit_sharp,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 18,
-                                            ),
-                                            onPressed: () async {
-                                              context.pushNamed('editVariant');
-                                            },
-                                          ),
-                                          FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 18,
-                                            borderWidth: 1,
-                                            buttonSize: 36,
-                                            icon: Icon(
-                                              Icons.delete,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 18,
-                                            ),
-                                            onPressed: () {
-                                              print('IconButton pressed ...');
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
                           ),
                         ],
                       ),
